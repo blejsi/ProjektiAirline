@@ -19,8 +19,9 @@ import java.util.List;
 public class AirportEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column
-    private int airportId;
+    private Integer airportId;
     @Column
     private String airportName;
     @Column

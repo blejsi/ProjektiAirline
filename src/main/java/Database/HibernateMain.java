@@ -26,26 +26,33 @@ public class HibernateMain {
 
         DestinationService destinationService = new DestinationService();
 
-        destination.setDestination_id(325);
-        destination.setAirline_name("Wizz");
-        destination.setCountry("Germany");
-        destination.setAirline_code("J456789K");
 
+//        destination.setAirline_name("Wizz");
+//        destination.setCountry("Germany");
+//        destination.setAirline_code("J456789K");
+//
+//
+//
+//
+//        airport.setAirportName("Nene Tereza");
+//        airport.setCountry("Albania");
+//        airport.setIATACode("A7220S");
+//
+//
+//        airport.getDestinations().add(destination);
+//
+//        destination.getAirport().add(airport);
+//
+//        airportService.addEntity(airport,sessionFactory);
+//        destinationService.addEntity(destination,sessionFactory);
 
+     destinationService.updateAirline_name(1, "afsdjfhklasdhf", sessionFactory);
+     destinationService.updateCountry(1, "Germany", sessionFactory);
+     destinationService.airline_code(1, "J678L", sessionFactory);
 
-        airport.setAirportId(345679);
-        airport.setAirportName("Nene Tereza");
-        airport.setCountry("Albania");
-        airport.setIATACode("A7220S");
-
-
-        airport.getDestinations().add(destination);
-
-        destination.getAirport().add(airport);
-
-        airportService.addEntity(airport,sessionFactory);
-
-
+     airportService.updateAirportName(1, "New York", sessionFactory);
+     airportService.updateCountry(1, "Hollande ", sessionFactory);
+     airportService.updateIATAcode(1, "G345H", sessionFactory);
 
 
 

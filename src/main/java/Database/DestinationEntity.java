@@ -17,8 +17,9 @@ import java.util.List;
 @Setter
 public class DestinationEntity {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column
-    private int destination_id;
+    private Integer id;
     @Column
     private String airline_name;
     @Column
