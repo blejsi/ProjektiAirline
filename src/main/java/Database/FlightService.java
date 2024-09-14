@@ -1,7 +1,10 @@
 package Database;
+import jakarta.persistence.EntityManager;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+
+import java.util.List;
 
 public class FlightService {
 
@@ -50,6 +53,20 @@ public class FlightService {
         session.close();
         return flightEntity;
     }
+
+    public void FindByID(Integer id,SessionFactory sessionFactory) {
+        EntityManager em = sessionFactory.getCurrentSession();
+        Session session = sessionFactory.getCurrentSession();
+        Transaction transaction = session.beginTransaction();
+
+        String hql = "SELECT a FROM flight a WHERE  flightID = :id";
+
+        FlightEntity flight = em.createQuery("FROM flight ", FlightEntity.class).getSingleResult();
+        System.out.println(flight.toString());
+        transaction.commit();
+        session.close();
+    }
+
 
     public void deleteFlight(Integer id, SessionFactory sessionFactory) {
         Session session = sessionFactory.getCurrentSession();

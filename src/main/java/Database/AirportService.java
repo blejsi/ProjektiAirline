@@ -78,8 +78,8 @@ public void FindByID(Integer id,SessionFactory sessionFactory) {
 
         String hql = "SELECT a FROM airport a WHERE  airportId = :id";
 
-    List<AirportEntity> cars = em.createQuery("FROM airport ", AirportEntity.class).getResultList();
-    System.out.println(cars.toString());
+    List<AirportEntity> airport = em.createQuery("FROM airport ", AirportEntity.class).getResultList();
+    System.out.println(airport.toString());
         transaction.commit();
         session.close();
     }

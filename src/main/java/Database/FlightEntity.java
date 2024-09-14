@@ -19,7 +19,6 @@ import java.util.List;
 public class FlightEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column
     private Integer flightID;
 
@@ -29,8 +28,6 @@ public class FlightEntity {
     @Column
     private String routeID;
 
-    @Column
-    private String airlineID;
 
     @Column
     private String date;
@@ -44,7 +41,25 @@ public class FlightEntity {
     @Column
     private String duration;
 
-    @OneToMany(mappedBy = "flight", cascade = CascadeType.ALL)
-    private List<EmployeeFlightAssignmentEntity> employeeAssignments = new ArrayList<>();
+    @ManyToMany
+    @JoinTable(
+            name = "employee_flights",
+            joinColumns = {@JoinColumn(name = "flight_ID")},
+            inverseJoinColumns = {@JoinColumn(name = "employee_ID")}
+    )
+    private List<EmployeeEntity> employee = new ArrayList<>();
+
+
+    @ManyToOne
+    @JoinColumn(name = "airlineId")
+    private AirlinesEntity airlines = new AirlinesEntity();
+
+
+    @OneToMany(mappedBy = "flight")
+    private List<PassengersEntity> passengersEntities = new ArrayList<>();
+
+    @ManyToOne
+    @JoinColumn(name = "routes_ID")
+    private RoutesEntity routes = new RoutesEntity();
 }
 

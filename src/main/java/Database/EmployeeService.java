@@ -51,6 +51,17 @@ public class EmployeeService {
         session.close();
         return employeeEntity;
     }
+  public EmployeeEntity findByName(Integer id, SessionFactory sessionFactory) {
+        Session session = sessionFactory.getCurrentSession();
+        Transaction transaction = session.beginTransaction();
+        String hql = "SELECT e FROM employee e WHERE e.uniqueID = :id";
+        EmployeeEntity employeeEntity = session.createQuery(hql, EmployeeEntity.class)
+                .setParameter("id", id)
+                .getSingleResult();
+        transaction.commit();
+        session.close();
+        return employeeEntity;
+    }
 
     public void deleteEmployee(Integer id, SessionFactory sessionFactory) {
         Session session = sessionFactory.getCurrentSession();

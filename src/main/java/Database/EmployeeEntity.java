@@ -18,9 +18,8 @@ import java.util.List;
 public class EmployeeEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column
-    private Integer uniqueID;
+    private Integer employee_id;
 
     @Column(nullable = false)
     private String name;
@@ -43,8 +42,8 @@ public class EmployeeEntity {
     @Column
     private String airportIDNumber;
 
-    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
-    private List<EmployeeFlightAssignmentEntity> flightAssignments = new ArrayList<>();
+    @ManyToMany(mappedBy = "employee")
+    private List<FlightEntity> flights = new ArrayList<>();
 
 }
 

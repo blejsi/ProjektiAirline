@@ -15,16 +15,15 @@ public class HibernateMain {
                 .configure("Hibernate.xml")
                 .addAnnotatedClass(AirportEntity.class)
                 .addAnnotatedClass(DestinationEntity.class)
+                .addAnnotatedClass(EmployeeEntity.class)
+                .addAnnotatedClass(FlightEntity.class)
+                .addAnnotatedClass(PassengersEntity.class)
+                .addAnnotatedClass(AirlinesEntity.class)
+                .addAnnotatedClass(RoutesEntity.class)
                 .buildSessionFactory();
 
 
-        AirportEntity airport = new AirportEntity();
 
-        AirportService airportService = new AirportService();
-
-        DestinationEntity destination = new DestinationEntity();
-
-        DestinationService destinationService = new DestinationService();
 
 
 //        destination.setAirline_name("Wizz");
@@ -46,13 +45,7 @@ public class HibernateMain {
 //        airportService.addEntity(airport,sessionFactory);
 //        destinationService.addEntity(destination,sessionFactory);
 
-     destinationService.updateAirline_name(1, "afsdjfhklasdhf", sessionFactory);
-     destinationService.updateCountry(1, "Germany", sessionFactory);
-     destinationService.airline_code(1, "J678L", sessionFactory);
 
-     airportService.updateAirportName(1, "New York", sessionFactory);
-     airportService.updateCountry(1, "Hollande ", sessionFactory);
-     airportService.updateIATAcode(1, "G345H", sessionFactory);
 
 
 

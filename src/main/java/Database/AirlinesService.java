@@ -17,7 +17,7 @@ public class AirlinesService {
     public AirlinesEntity findById(Integer id,SessionFactory sessionFactory) {
         Session session = sessionFactory.getCurrentSession();
         Transaction transaction = session.beginTransaction();
-        AirlinesEntity airlinesEntity = session.createQuery("Select a from AirlinesEntity a where airlineId = :id", AirlinesEntity.class)
+        AirlinesEntity airlinesEntity = session.createQuery("Select a from airlines a where airlineId = :id", AirlinesEntity.class)
                 .setParameter("id", id)
                 .getSingleResult();
         transaction.commit();
@@ -28,7 +28,7 @@ return airlinesEntity;
     public void updateName(Integer id, String name,SessionFactory sessionFactory) {
         Session session = sessionFactory.getCurrentSession();
         Transaction transaction = session.beginTransaction();
-        String hql = "SELECT n FROM AirlinesEntity n WHERE airlineId = :id";
+        String hql = "SELECT n FROM airlines n WHERE airlineId = :id";
         AirlinesEntity airlinesEntity = session.createQuery(hql, AirlinesEntity.class)
                 .setParameter("id", id)
                 .getSingleResult();
@@ -42,7 +42,7 @@ return airlinesEntity;
     public void updateIATACode(Integer id, String IATACode,SessionFactory sessionFactory) {
         Session session = sessionFactory.getCurrentSession();
         Transaction transaction = session.beginTransaction();
-        String hql = "SELECT i FROM AirlinesEntity i WHERE airlineId = :id";
+        String hql = "SELECT i FROM airlines i WHERE airlineId = :id";
         AirlinesEntity airlinesEntity = session.createQuery(hql, AirlinesEntity.class)
                 .setParameter("id", id )
                 .getSingleResult();
@@ -56,7 +56,7 @@ return airlinesEntity;
     public void updateFleet(Integer id, Integer fleet,SessionFactory sessionFactory) {
         Session session = sessionFactory.getCurrentSession();
         Transaction transaction = session.beginTransaction();
-        String hql = "SELECT f FROM AirlinesEntity f WHERE airlineId = :id";
+        String hql = "SELECT f FROM airlines f WHERE airlineId = :id";
         AirlinesEntity airlinesEntity = session.createQuery(hql, AirlinesEntity.class)
                 .setParameter("id", id)
                 .getSingleResult();
@@ -70,7 +70,7 @@ return airlinesEntity;
     public void updateEmployees(Integer id, Integer employees,SessionFactory sessionFactory) {
         Session session = sessionFactory.getCurrentSession();
         Transaction transaction = session.beginTransaction();
-        String hql = "SELECT e FROM AirlinesEntity e WHERE airlineId = :id";
+        String hql = "SELECT e FROM airlines e WHERE airlineId = :id";
         AirlinesEntity airlinesEntity = session.createQuery(hql, AirlinesEntity.class)
                 .setParameter("id", id)
                 .getSingleResult();
@@ -84,7 +84,7 @@ return airlinesEntity;
     public void updateCountry(Integer id, String country,SessionFactory sessionFactory) {
         Session session = sessionFactory.getCurrentSession();
         Transaction transaction = session.beginTransaction();
-        String hql = "SELECT c FROM AirlinesEntity c WHERE airlineId = :id";
+        String hql = "SELECT c FROM airlines c WHERE airlineId = :id";
         AirlinesEntity airlinesEntity = session.createQuery(hql, AirlinesEntity.class)
                 .setParameter("id", id)
                 .getSingleResult();

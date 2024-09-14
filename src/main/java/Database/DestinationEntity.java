@@ -27,7 +27,11 @@ public class DestinationEntity {
     private String country;
 
    @ManyToOne
+   @JoinColumn(name = "airport")
     private AirportEntity airport = new AirportEntity();
+
+   @OneToMany(mappedBy = "destination")
+   private List<RoutesEntity> routes = new ArrayList<>();
 
     @Override
     public String toString() {

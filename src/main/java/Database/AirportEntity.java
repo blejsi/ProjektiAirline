@@ -32,6 +32,8 @@ public class AirportEntity {
     @OneToMany(mappedBy = "airport")
     private List<DestinationEntity> destinations = new ArrayList<DestinationEntity>();
 
+    @OneToMany(mappedBy = "airport")
+    private List<RoutesEntity> routesEntities;
 
     @Override
     public String toString() {
