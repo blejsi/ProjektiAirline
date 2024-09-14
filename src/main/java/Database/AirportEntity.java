@@ -19,7 +19,6 @@ import java.util.List;
 public class AirportEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column
     private Integer airportId;
     @Column
@@ -30,11 +29,18 @@ public class AirportEntity {
     private String country;
 
 
-    @ManyToMany(mappedBy = "airport")
+    @OneToMany(mappedBy = "airport")
     private List<DestinationEntity> destinations = new ArrayList<DestinationEntity>();
 
 
-
-
-
+    @Override
+    public String toString() {
+        return "AirportEntity{" +
+                "airportId=" + airportId +
+                ", airportName='" + airportName + '\'' +
+                ", IATACode='" + IATACode + '\'' +
+                ", country='" + country + '\'' +
+                ", destinations=" + destinations +
+                '}';
+    }
 }

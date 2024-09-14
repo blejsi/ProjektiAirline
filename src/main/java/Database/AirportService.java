@@ -1,9 +1,13 @@
 package Database;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.EntityManager;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
+
+import java.util.List;
+
 
 public class AirportService {
 
@@ -65,6 +69,49 @@ public void updateAirportName(Integer id, String AirportName,SessionFactory sess
         transaction.commit();
         session.close();
     }
+
+
+public void FindByID(Integer id,SessionFactory sessionFactory) {
+        EntityManager em = sessionFactory.getCurrentSession();
+        Session session = sessionFactory.getCurrentSession();
+        Transaction transaction = session.beginTransaction();
+
+        String hql = "SELECT a FROM airport a WHERE  airportId = :id";
+
+    List<AirportEntity> cars = em.createQuery("FROM airport ", AirportEntity.class).getResultList();
+    System.out.println(cars.toString());
+        transaction.commit();
+        session.close();
+    }
+
+    public void FindByName(String name,SessionFactory sessionFactory) {
+        EntityManager em = sessionFactory.getCurrentSession();
+        Session session = sessionFactory.getCurrentSession();
+        Transaction transaction = session.beginTransaction();
+
+        String hql = "SELECT a FROM airport a WHERE  airportName = :name";
+
+    List<AirportEntity> cars = em.createQuery(hql, AirportEntity.class).getResultList();
+    System.out.println(cars.toString());
+
+        transaction.commit();
+        session.close();
+    }
+
+
+
+
+    public void deleteInDb(Integer id, SessionFactory sessionFactory) {
+        Session session = sessionFactory.getCurrentSession();
+        Transaction transaction = session.beginTransaction();
+        AirportEntity airportEntity = session.createQuery("Select s from airport s where id = :id", AirportEntity.class)
+                .setParameter("id", id)
+                .getSingleResult();
+        session.remove(airportEntity);
+        transaction.commit();
+        session.close();
+    }
+
 
 
 
